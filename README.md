@@ -1,3 +1,6 @@
 # Archivable-Log-Files
 
-To being start by typing `source run.sh`
+Take a look at the input Log Files.
+
+To begin start by typing `source run.sh`
+
