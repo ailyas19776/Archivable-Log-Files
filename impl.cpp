@@ -1,10 +1,6 @@
-//01BD41C3BF016AD7E8B6F837DF18926EC3E83350
 #include "impl.h"
 #include "getopt.h"
 using namespace std;
-
-//check gradescope
-//extra tutoring
 
 void logMan::getMode(int argc, char* argv[]) {
     opterr = false; // Let us handle all error output for command line options
@@ -92,9 +88,7 @@ void logMan::processEverything(char& cmd) {
 		cin >> t1; 
 		prevSearch.clear();
 		prevSearchExists = true;
-	
-		//string  timeStampstring = t1[13]  + t1[12] + t1[10] + t1[9] 
-		//	+ t1[7]  + t1[6] + t1[4] + t1[3] + t1[1] + t1[0];
+
 		t1.erase(t1.begin() + 2);
 		t1.erase(t1.begin() + 4);
 		t1.erase(t1.begin() + 6);
@@ -106,15 +100,7 @@ void logMan::processEverything(char& cmd) {
 		t1.erase(t1.begin() + 19);
 
 		string timeStamp2String = t1.substr(11, 10);
-		//int64_t  timeStamp1 = (t1[13] - '0') + (t1[12] - '0') * 10L + (t1[10] - '0') * 100L
-		//	+ (t1[9] - '0') * 100L + (t1[7] - '0') * 10000L + (t1[6] - '0') * 10000L
-		//	+ (t1[4] - '0') * 1000000L + (t1[3] - '0') * 1000000L
-		//	+ (t1[1] - '0') * 100000000L + (t1[0] - '0') * 100000000L;
-
-		//int64_t timeStamp2 = (t1[28] - '0') + (t1[27] - '0') * 10L + (t1[25] - '0') * 100L
-		//	+ (t1[24] - '0') * 1000L + (t1[22] - '0') * 10000L + (t1[21] - '0') * 100000L
-		//	+ (t1[19] - '0') * 1000000L + (t1[18] - '0') * 10000000L
-		//	+ (t1[16] - '0') * 100000000L + (t1[15] - '0') * 100000000L;
+	
 		int64_t  timeStamp1 = stoll(timeStamp1String);
 
 		int64_t timeStamp2 = stoll(timeStamp2String);
@@ -149,20 +135,15 @@ void logMan::processEverything(char& cmd) {
 		matchingTimeStamp.erase(matchingTimeStamp.begin() + 6);
 		matchingTimeStamp.erase(matchingTimeStamp.begin() + 8);
 		int64_t timeStamp1 = stoll(matchingTimeStamp);
-		//uint64_t timeStamp1 = (matchingTimeStamp[13] - '0') * 1L + (matchingTimeStamp[12] - '0') * 10L + (matchingTimeStamp[10] - '0') * 100L
-		//	+ (matchingTimeStamp[9] - '0') * 1000L + (matchingTimeStamp[7] - '0') * 10000L + (matchingTimeStamp[6] - '0') * 100000L
-		//	+ (matchingTimeStamp[4] - '0') * 1000000L + (matchingTimeStamp[3] - '0') * 10000000L
-		//	+ (matchingTimeStamp[1] - '0') * 100000000L + (matchingTimeStamp[0] - '0') * 100000000L;
+	
 		
 		auto temp = [](const entries& a, const int64_t b) { return a.timeStampInt < b; };
 		auto temp2 = [](const int64_t b, const entries& a) { return b < a.timeStampInt; };
 		auto low = lower_bound(masterLog.begin(), masterLog.end(), timeStamp1, temp);
 		auto up = upper_bound(low, masterLog.end(), timeStamp1, temp2);
 		
-		//prevSearch.push_back(timeStamp1);
 		rt1 = low;
 		rt2 = up;
-		//prevSearch.push_back(static_cast<uint32_t>(low - masterLog.begin()));
 		
 
 		m = true;
@@ -247,56 +228,18 @@ void logMan::processEverything(char& cmd) {
 		cout << "Keyword search: " << prevSearch.size() << " entries found" << "\n";
 
 		break;
-		//for (size_t i = 0; i < numofwords on k line; i++) {
-		//	if (w[i] is not in keymap) {
-		//		mostRecent.clear();
-		//		break;
-		//	} OR
-		//	if (keymap[word[i]].empty() || keymap[word[i]].back != i) {
-		//		keymap[word[i]].push_back(i);
-		//		mostRecent.clear();
-		//		break;
-		//	}
-		//	//set_intersection(keyword.begin(), keyword.end(), prevSearch.begin(), prevSearch.end()/mostRecent begin/end, backinserter(temp));
-		//	//swap(temp, prevSearch/*mostRecent*/);
-		//}
-		//remembers as a vector
-		//unordered_map<string, vector<uint32_t>> keymap;
-		//preprocess and transform to lower case string;
-		//2 vectors: searchResults, temp
-		//vector<char> temp;
-		//set_intersection(keyword.begin(), keyword.end()[](char c) {isalnum(c); };
-		//for(i= 1; i < numOfWords on k line){
-		//if vec.back is diff than i, push_back i into keymap, break if empty
-		//set_intersection(searchResulsts s1/prevSearch.begin/end, look up word i.begin/end, back_inserter(outputVec/temp)) for parsing the cinputs
-		//swap(searchResults/s1/prevSearch, outputVec/temp);
-		//ouputVec/temp.clear();
-		//if not found results.clear();// break;}
-		//holds indices
-		//back_inserter, set_intersection()
-		//isalnum() && find_if()
-		//map[] = 
-		//% k tcp bad
-		//replace no alnum to a space, then using string extraction operator (stringstream)
-		//loop to change things into spaces, turn into string stream, while loop produces a string stream
-		//tcp -> {2,3}//indexes
-		//bad -> {2,3}//indexes
-		//then take set_intersection, 
-		//when to use another cinput for this?
+		
 	}
 	case 'a':
 	{
 		cin >> ws;
 		cin >> append;//append refers to origianl vector entryID position
-		//entryID use original vector -- append is referring to the original masterLog indices?
-		//auto findOrigIndex = find(copy.begin(), copy.end(), append);
+
 		auto it = copy.find(append);
 		if (it == copy.end()) {
 			break;
 		}
 
-		//auto pos = masterLog[findOrigIndex - copy.begin()];
-		//auto indexOfAppend = find(masterLog.begin(), masterLog.end(), findOrigIndex - copy.begin());
 		
 		if (static_cast<size_t>(it->second) < masterLog.size()) {
 			excerpt.emplace_back(it->second);
@@ -316,11 +259,6 @@ void logMan::processEverything(char& cmd) {
 		}
 		else {
 			if (t == true) {
-				//auto temp = [](const entries& a, const int64_t b) { return a.timeStampInt < b; };//lower
-				//auto temp2 = [](const int64_t  b, const entries& a) { return b < a.timeStampInt; };//upper
-				//auto low = lower_bound(masterLog.begin(), masterLog.end(), rt1, temp);
-				//auto up = upper_bound(low, masterLog.end(), rt2, temp2);
-
 				auto it = rt2 - rt1;
 				auto temp = rt1;
 				while (temp  != rt2) {
@@ -331,10 +269,6 @@ void logMan::processEverything(char& cmd) {
 				
 			}
 			else if (m == true) {
-				//auto temp = [](const entries& a, const int64_t b) { return a.timeStampInt < b; };//lower
-				//auto temp2 = [](const int64_t  b, const entries& a) { return b < a.timeStampInt; };//upper
-				//auto low = lower_bound(masterLog.begin(), masterLog.end(), rt1, temp);
-				//auto up = upper_bound(low, masterLog.end(), rt2, temp2);
 				auto it = rt2 - rt1;
 				auto temp = rt1;
 				while (temp != rt2) {
@@ -357,20 +291,12 @@ void logMan::processEverything(char& cmd) {
 				}
 			}
 			else if (k == true) {
-				/*auto excerptIt = excerpt.begin();
-				for (auto it = prevSearch.begin(); it != prevSearch.end(); ) {
-					*excerptIt++ = *it++;
-				}*/
 				for (size_t i = 0; i < prevSearch.size(); i++) {
 					excerpt.emplace_back(prevSearch[i]);
 				}
 				cout << prevSearch.size() << " log entries appended" << "\n";
 			}
-			//adding all indexes and timeStamps on uint32_t timeStamp variable unused, entity is using a string as well?, k when do use additional cin
-			//auto it = find(masterLog.begin(), masterLog.end(), prevSearch[0]);//confused on using prevSearch
-			//if (it != masterLog.end()) {
-				//excerpt.push_back(it);
-			//}
+			
 		}
 
 		break;
@@ -406,8 +332,6 @@ void logMan::processEverything(char& cmd) {
 		cin >> ws;
 		cin >> end;
 		if (static_cast<size_t>(end) < excerpt.size()) {
-		//vector<uint32_t> temp;
-		//std::copy(excerpt.begin(), excerpt.end(), temp);
 			int temp = excerpt[end];
 			excerpt.erase(excerpt.begin() + end);
 			excerpt.emplace_back(temp);
@@ -467,12 +391,7 @@ void logMan::processEverything(char& cmd) {
 			break;
 		}
 		else {
-			//print most recent
 			if (t == true) {
-				//auto temp = [](const entries& a, const int64_t b) { return a.timeStampInt < b; };//lower
-				//auto temp2 = [](const int64_t  b, const entries& a) { return b < a.timeStampInt; };//upper
-				//auto low = lower_bound(masterLog.begin(), masterLog.end(), rt1, temp);
-				//auto up = upper_bound(low, masterLog.end(), rt2, temp2);
 				auto temp = rt1;
 				while (temp != rt2) {
 					cout << masterLog[temp - masterLog.begin()].entryID << "|" << masterLog[temp - masterLog.begin()].timeStamp <<
@@ -481,10 +400,6 @@ void logMan::processEverything(char& cmd) {
 				}
 			}
 			else if (m == true) {
-				//auto temp = [](const entries& a, const int64_t b) { return a.timeStampInt < b; };//lower
-				//auto temp2 = [](const int64_t  b, const entries& a) { return b < a.timeStampInt; };//upper
-				//auto low = lower_bound(masterLog.begin(), masterLog.end(), rt1, temp);
-				//auto up = upper_bound(low, masterLog.end(), rt2, temp2);
 				auto temp = rt1;
 				while (rt1 != rt2) {
 					cout << masterLog[temp - masterLog.begin()].entryID << "|" << masterLog[temp - masterLog.begin()].timeStamp <<
@@ -514,7 +429,6 @@ void logMan::processEverything(char& cmd) {
 		for (size_t i = 0; i < excerpt.size(); i++) {
 			cout << i << "|" << masterLog[excerpt[i]].entryID << "|" << masterLog[excerpt[i]].timeStamp <<
 				"|" << masterLog[excerpt[i]].category << "|" << masterLog[excerpt[i]].message << "\n";
-			// 0|10|07:02:10:12:43|PGM|Beginning master election.
 		}
 		break;
 	}
@@ -540,16 +454,12 @@ void logMan::readingInput() {
 	while (getline(ifz, ts, '|')) {
 		numEntries++;
 		entries entry;
-		//copy.push_back(id);
 		entry.entryID = id++;
 		if (ts.size() != 14) {
 			ts.clear();
 			continue;
 		}
-		//uint64_t timeStamp = (ts[13] - '0') * 1L + (ts[12] - '0') * 10L + (ts[10] - '0') * 100L
-		//	+ (ts[9] - '0') * 1000L + (ts[7] - '0') * 10000L + (ts[6] - '0') * 100000L
-		//	+ (ts[4] - '0') * 1000000L + (ts[3] - '0') * 10000000L
-		//	+ (ts[1] - '0') * 100000000L + (ts[0] - '0') * 100000000L;
+
 
 		entry.timeStamp = ts;
 		ts.erase(ts.begin() + 2);
@@ -565,7 +475,6 @@ void logMan::readingInput() {
 
 		getline(ifz, msg);
 		entry.message = msg;
-		//keyword[msg].emplace_back(index);//index
 
 		masterLog.emplace_back(entry);
 		++index;
