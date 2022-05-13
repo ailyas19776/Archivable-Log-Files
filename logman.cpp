@@ -1,4 +1,3 @@
-//01BD41C3BF016AD7E8B6F837DF18926EC3E83350
 #include <iostream>
 #include "impl.h"
 using namespace std;
