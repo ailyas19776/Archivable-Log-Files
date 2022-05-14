@@ -10,16 +10,19 @@ To run the program, start by inputting the log data (the user can also create th
 
 ./logfile master-file.txt < run-all-cmds.txt
 
-###### CUSTOM RUN:
-
-./logfile specified_log_file.txt < specified_cmds.txt 
-
-
 
 ![image](https://user-images.githubusercontent.com/97473935/168443049-516adc55-10d4-420b-b66c-f816573a1a58.png)
 
 
 ![image](https://user-images.githubusercontent.com/97473935/168443054-87d696af-edcd-4562-9a8b-eb34637cdc09.png)
+
+
+
+
+###### CUSTOM RUN:
+
+./logfile specified_log_file.txt < specified_cmds.txt 
+
 
 
 
