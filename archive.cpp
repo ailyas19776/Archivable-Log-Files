@@ -1,5 +1,5 @@
-#include "impl.h"
-#include "getopt.h"
+#include "archive.h"
+#include <getopt.h>
 using namespace std;
 
 void logMan::getMode(int argc, char* argv[]) {

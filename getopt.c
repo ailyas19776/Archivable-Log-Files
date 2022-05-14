@@ -1,5 +1,3 @@
-//01BD41C3BF016AD7E8B6F837DF18926EC3E83350
-
 // https://github.com/dgarriga/ngscmd/tree/master/src
 
 #if defined(_MSC_VER) && !defined(_CRT_SECURE_NO_WARNINGS)

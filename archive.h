@@ -1,6 +1,6 @@
 #pragma once
-#ifndef IMPL_H
-#define IMPL_H
+#ifndef ARCHIVE_H
+#define ARCHIVE_H
 //#include "strcasecmp.h"
 #include <string.h>
 #include <cstring>
